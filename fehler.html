@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fehlerrechnung – Hub</title>
+  <meta name="description" content="Mittelwert, Standardabweichung, Vertrauensbereich und Fehlerfortpflanzung">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <p><a href="index.html">← Zurück zum Hub</a></p>
+    <h1>📊 Fehlerrechnung</h1>
+    <p>Messreihe auswerten und Unsicherheiten fortpflanzen, mit richtiger Rundung fürs Protokoll.</p>
+  </header>
+
+  <main>
+    <section class="box">
+      <h2>Messreihe</h2>
+      <p class="hinweis">Messwerte durch Leerzeichen, Zeilenumbruch oder Semikolon trennen. Dezimalkomma ist erlaubt.</p>
+      <textarea id="m-werte" rows="4" placeholder="z. B. 10,1  10,3  10,2  10,4  10,0" aria-label="Messwerte"></textarea>
+      <p id="m-fehler" class="fehler" hidden></p>
+      <div id="m-out" class="ergebnis-box" hidden>
+        <p class="gross">Ergebnis: <strong id="m-ergebnis"></strong></p>
+        <p id="m-ergebnis95"></p>
+        <table class="text">
+          <tbody id="m-tabelle"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="box">
+      <h2>Fehlerfortpflanzung</h2>
+      <p class="hinweis">Formel eingeben, z. B. <code>m/(M*V)</code>. Erlaubt: <code>+ − * / ^ ( )</code>, <code>sqrt ln log exp sin cos tan abs</code>, <code>pi</code> und <code>e</code>. Für jede Variable erscheinen Felder für Wert und Unsicherheit (Gaußsche Fortpflanzung).</p>
+      <input id="f-ausdruck" class="voll" type="text" value="m/(M*V)" aria-label="Formel" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <p id="f-fehler" class="fehler" hidden></p>
+      <div id="f-felder" class="form"></div>
+      <div id="f-out" class="ergebnis-box" hidden>
+        <p class="gross">Ergebnis: <strong id="f-ergebnis"></strong></p>
+        <p id="f-rel"></p>
+        <table class="text">
+          <thead><tr><th>Variable</th><th>∂f/∂x</th><th>Anteil am Fehler</th></tr></thead>
+          <tbody id="f-tabelle"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <p class="hinweis">Rundung: Die Unsicherheit wird auf 1 signifikante Stelle gerundet (auf 2, wenn die erste Ziffer 1 oder 2 ist), der Wert auf dieselbe Dezimalstelle.
+      Vertrauensbereich: Student-t für 95 %, ab 31 Messungen vereinfacht mit 1,96. Bei der Fortpflanzung müssen alle Unsicherheiten dieselbe Art haben (z. B. alle Standardabweichungen des Mittelwerts).
+      Das Verfahren gilt für unabhängige Größen.</p>
+  </main>
+
+  <footer><p><a href="index.html">← Zurück zum Hub</a></p></footer>
+  <script src="rechnen.js"></script>
+  <script src="fehler.js"></script>
+</body>
+</html>

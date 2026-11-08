@@ -1,0 +1,141 @@
+:root {
+  --bg: #f7f7f5;
+  --card: #ffffff;
+  --text: #1c1c1a;
+  --muted: #6b6b66;
+  --border: #e2e2dc;
+  --accent: #2f6fed;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161616;
+    --card: #1f1f1f;
+    --text: #ececea;
+    --muted: #9a9a94;
+    --border: #2e2e2e;
+    --accent: #6b9bff;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+header, main, footer { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+header { padding-top: 40px; }
+h1 { margin: 0 0 4px; font-size: 2rem; }
+header p { margin: 0 0 20px; color: var(--muted); }
+#suche {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+}
+.filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 24px; }
+.filter button {
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.filter button.aktiv { background: var(--accent); border-color: var(--accent); color: #fff; }
+section { margin-top: 28px; }
+section h2 { margin: 0 0 12px; font-size: 1.3rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.card {
+  display: block;
+  padding: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: inherit;
+  text-decoration: none;
+  transition: transform .12s, border-color .12s;
+}
+.card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.card h3 { margin: 0 0 4px; font-size: 1.05rem; }
+.card p { margin: 0 0 10px; color: var(--muted); font-size: 0.92rem; }
+.tag { font-size: 0.75rem; color: var(--accent); }
+footer { padding: 32px 16px 40px; color: var(--muted); font-size: 0.85rem; }
+code { background: var(--card); border: 1px solid var(--border); padding: 1px 6px; border-radius: 5px; }
+#formel {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+}
+a { color: var(--accent); }
+.gross { font-size: 1.4rem; margin: 20px 0 12px; }
+.fehler { color: #d33; margin-top: 16px; }
+table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+th, td { padding: 8px 12px; text-align: right; border-bottom: 1px solid var(--border); font-size: 0.92rem; }
+th:first-child, td:first-child { text-align: left; }
+.hinweis { margin-top: 28px; color: var(--muted); font-size: 0.85rem; }
+@media (max-width: 520px) { th, td { padding: 6px 6px; font-size: 0.8rem; } }
+.chip { border: 1px solid var(--border); background: var(--card); padding: 6px 14px; border-radius: 999px; font-size: 0.9rem; text-decoration: none; }
+table.text td, table.text th { text-align: left; vertical-align: top; }
+table.text { margin-bottom: 8px; }
+#suche { margin-bottom: 0; }
+
+/* Periodensystem */
+.k-alkali { --k: 12 90% 55%; }
+.k-erdalkali { --k: 32 90% 50%; }
+.k-uebergang { --k: 210 70% 55%; }
+.k-lanthanoid { --k: 280 55% 58%; }
+.k-actinoid { --k: 320 55% 55%; }
+.k-metall { --k: 175 50% 42%; }
+.k-halbmetall { --k: 90 45% 45%; }
+.k-nichtmetall { --k: 140 55% 42%; }
+.k-halogen { --k: 50 85% 45%; }
+.k-edelgas { --k: 250 60% 62%; }
+.pt-scroll { overflow-x: auto; padding-bottom: 8px; }
+.pt { display: grid; grid-template-columns: repeat(18, minmax(44px, 1fr)); grid-template-rows: repeat(7, auto) 14px repeat(2, auto); gap: 4px; min-width: 860px; }
+.el {
+  font: inherit; color: var(--text); cursor: pointer; padding: 4px 2px; text-align: center;
+  background: hsl(var(--k) / .16); border: 1px solid hsl(var(--k) / .55); border-radius: 6px;
+  display: flex; flex-direction: column; align-items: center; line-height: 1.15;
+}
+.el small { font-size: .62rem; color: var(--muted); }
+.el strong { font-size: 1rem; }
+.el:hover { background: hsl(var(--k) / .32); }
+.el.gewaehlt { outline: 2px solid var(--text); outline-offset: 1px; }
+.el.gedimmt { opacity: .18; }
+.filter button[class*="k-"] { background: hsl(var(--k) / .16); border-color: hsl(var(--k) / .55); }
+.filter button[class*="k-"].aktiv { background: hsl(var(--k) / .6); color: var(--text); border-color: hsl(var(--k)); }
+.detail { display: flex; gap: 18px; align-items: center; padding: 16px; margin-bottom: 16px; background: hsl(var(--k) / .12); border: 1px solid hsl(var(--k) / .5); border-radius: 12px; }
+.gross-sym { font-size: 3.2rem; font-weight: 700; min-width: 90px; text-align: center; color: hsl(var(--k)); }
+.detail h2 { margin: 0 0 6px; font-size: 1.3rem; }
+.detail dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 14px; margin: 0; }
+.detail dt { color: var(--muted); font-size: .9rem; }
+.detail dd { margin: 0; }
+@media (max-width: 520px) { .detail { flex-direction: column; align-items: flex-start; } }
+
+/* Rechner-Seiten */
+.box { margin: 24px 0; padding: 18px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; }
+.box h2 { margin: 0 0 4px; font-size: 1.2rem; }
+.box > p.hinweis { margin: 0 0 14px; }
+.form { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 12px 0; }
+.form label { display: flex; flex-direction: column; gap: 4px; font-size: .85rem; color: var(--muted); }
+.form input, .form select, .form textarea, .box textarea, .box input.voll {
+  font: inherit; font-size: 1rem; padding: 9px 10px; color: var(--text); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 8px; width: 100%;
+}
+.form input:focus, .form select:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; }
+.ergebnis-box { margin-top: 12px; padding: 12px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+.ergebnis-box p { margin: 2px 0; }
+.ergebnis-box .gross { margin: 4px 0 8px; }
+.ok { color: var(--accent); }
+canvas { width: 100%; height: 320px; display: block; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+[hidden] { display: none !important; }

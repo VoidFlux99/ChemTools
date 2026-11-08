@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Periodensystem – Hub</title>
+  <meta name="description" content="Klickbares Periodensystem mit Molmasse, Elektronegativität und Elektronenkonfiguration">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <p><a href="index.html">← Zurück zum Hub</a></p>
+    <h1>🧪 Periodensystem</h1>
+    <p>Element anklicken für Details. Suche nach Name, Symbol oder Ordnungszahl.</p>
+    <input id="suche" type="search" placeholder="Element suchen, z. B. Fe, Eisen, 26 …" aria-label="Suche" autocomplete="off">
+    <div id="legende" class="filter"></div>
+  </header>
+
+  <main>
+    <div id="detail" class="detail" aria-live="polite"></div>
+    <div class="pt-scroll"><div id="pt" class="pt"></div></div>
+    <p class="hinweis">Elektronegativität nach Pauling. Atommasse in eckigen Klammern: Massenzahl des langlebigsten Isotops (kein stabiles Element).
+      Eigenschaften der Elemente ab 104 sind großteils vorhergesagt. Konfigurationen mit den bekannten Ausnahmen (Cr, Cu, Pd, …).</p>
+  </main>
+
+  <footer>
+    <p><a href="index.html">← Zurück zum Hub</a></p>
+  </footer>
+
+  <script src="periodensystem-daten.js"></script>
+  <script src="periodensystem.js"></script>
+</body>
+</html>

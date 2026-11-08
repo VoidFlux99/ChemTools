@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DBÄ-Rechner – Hub</title>
+  <meta name="description" content="Doppelbindungsäquivalente aus der Summenformel berechnen">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <p><a href="index.html">← Zurück zum Hub</a></p>
+    <h1>🔗 DBÄ-Rechner</h1>
+    <p>Doppelbindungsäquivalente (Ringe + Doppelbindungen + 2 · Dreifachbindungen) aus der Summenformel, zum Beispiel <code>C6H6</code> oder <code>C9H8O4</code>.</p>
+    <input id="formel" type="text" placeholder="Summenformel …" aria-label="Summenformel"
+           autocomplete="off" autocapitalize="off" spellcheck="false" autofocus>
+  </header>
+
+  <main>
+    <p id="fehler" class="fehler" hidden></p>
+    <div id="ergebnis" hidden>
+      <p class="gross">DBÄ = <strong id="dbae"></strong></p>
+      <p id="deutung"></p>
+      <p id="rechnung" class="hinweis"></p>
+    </div>
+    <p class="hinweis">Formel: DBÄ = (2·C + 2 + N + P − H − X) / 2, mit X = F, Cl, Br, I.
+      Sauerstoff und Schwefel zählen nicht mit. Si zählt wie C, B wie N.
+      Gilt für neutrale organische Moleküle, nicht für Salze oder Komplexe.</p>
+  </main>
+
+  <footer>
+    <p><a href="index.html">← Zurück zum Hub</a></p>
+  </footer>
+
+  <script src="formel.js"></script>
+  <script src="dbae.js"></script>
+</body>
+</html>

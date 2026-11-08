@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Molmassen-Rechner – Hub</title>
+  <meta name="description" content="Molmasse aus der Summenformel berechnen">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <p><a href="index.html">← Zurück zum Hub</a></p>
+    <h1>⚖️ Molmassen-Rechner</h1>
+    <p>Summenformel eingeben, zum Beispiel <code>H2SO4</code>, <code>Ca(OH)2</code> oder <code>CuSO4·5H2O</code>.</p>
+    <input id="formel" type="text" placeholder="Summenformel …" aria-label="Summenformel"
+           autocomplete="off" autocapitalize="off" spellcheck="false" autofocus>
+  </header>
+
+  <main>
+    <p id="fehler" class="fehler" hidden></p>
+    <div id="ergebnis" hidden>
+      <p class="gross">M = <strong id="summe"></strong> g/mol</p>
+      <table>
+        <thead><tr><th>Element</th><th>Anzahl</th><th>Atommasse (g/mol)</th><th>Masse (g/mol)</th><th>Anteil</th></tr></thead>
+        <tbody id="zeilen"></tbody>
+      </table>
+    </div>
+    <p class="hinweis">Groß- und Kleinschreibung zählt (<code>Co</code> ist Cobalt, <code>CO</code> ist Kohlenmonoxid).
+      Klammern <code>( )</code> und Hydratwasser mit <code>·</code> oder <code>*</code> gehen auch.
+      Atommassen: gerundete IUPAC-Standardwerte.</p>
+  </main>
+
+  <footer>
+    <p><a href="index.html">← Zurück zum Hub</a></p>
+  </footer>
+
+  <script src="formel.js"></script>
+  <script src="molmasse.js"></script>
+</body>
+</html>

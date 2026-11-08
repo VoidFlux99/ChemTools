@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Einwaage und Verdünnung – Hub</title>
+  <meta name="description" content="Einwaage, Verdünnung und Verdünnungsreihe berechnen">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <p><a href="index.html">← Zurück zum Hub</a></p>
+    <h1>🧴 Einwaage und Verdünnung</h1>
+    <p>Dezimalkomma oder Punkt, beides geht. Felder, die du <strong>leer</strong> lässt, werden berechnet.</p>
+  </header>
+
+  <main>
+    <section class="box">
+      <h2>Einwaage für eine Lösung</h2>
+      <p class="hinweis">m = c · V · M / Reinheit. Genau ein Feld bei c, V oder m leer lassen.</p>
+      <div class="form">
+        <label>Summenformel (für M)<input id="e-formel" type="text" placeholder="z. B. NaCl" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
+        <label>oder Molmasse M (g/mol)<input id="e-M" type="text" inputmode="decimal" placeholder="direkt eingeben"></label>
+        <label>Konzentration c (mol/L)<input id="e-c" type="text" inputmode="decimal"></label>
+        <label>Volumen V (mL)<input id="e-V" type="text" inputmode="decimal"></label>
+        <label>Einwaage m (g)<input id="e-m" type="text" inputmode="decimal"></label>
+        <label>Reinheit (%)<input id="e-p" type="text" inputmode="decimal" value="100"></label>
+      </div>
+      <div id="e-out" class="ergebnis-box" hidden></div>
+    </section>
+
+    <section class="box">
+      <h2>Verdünnung</h2>
+      <p class="hinweis">c₁ · V₁ = c₂ · V₂. Genau ein Feld leer lassen. 1 = Stammlösung, 2 = fertige Lösung.</p>
+      <div class="form">
+        <label>c₁ Stammlösung<input id="v-c1" type="text" inputmode="decimal"></label>
+        <label>V₁ zu pipettieren (mL)<input id="v-V1" type="text" inputmode="decimal"></label>
+        <label>c₂ Zielkonzentration<input id="v-c2" type="text" inputmode="decimal"></label>
+        <label>V₂ Endvolumen (mL)<input id="v-V2" type="text" inputmode="decimal"></label>
+      </div>
+      <div id="v-out" class="ergebnis-box" hidden></div>
+    </section>
+
+    <section class="box">
+      <h2>Verdünnungsreihe</h2>
+      <p class="hinweis">Gleicher Faktor in jeder Stufe, jede Stufe wird aus der vorigen angesetzt.</p>
+      <div class="form">
+        <label>Startkonzentration<input id="r-c" type="text" inputmode="decimal"></label>
+        <label>Faktor pro Stufe (z. B. 10)<input id="r-f" type="text" inputmode="decimal" value="10"></label>
+        <label>Anzahl Stufen<input id="r-n" type="text" inputmode="numeric" value="6"></label>
+        <label>Volumen pro Stufe (mL)<input id="r-V" type="text" inputmode="decimal" value="10"></label>
+      </div>
+      <div id="r-out" hidden>
+        <table class="text">
+          <thead><tr><th>Stufe</th><th>Konzentration</th><th>Übertrag (mL)</th><th>Lösungsmittel (mL)</th></tr></thead>
+          <tbody id="r-zeilen"></tbody>
+        </table>
+      </div>
+      <p id="r-fehler" class="fehler" hidden></p>
+    </section>
+
+    <p class="hinweis">Die Konzentrationseinheit bleibt wie eingegeben (mol/L, g/L, ppm …), sie muss nur bei c₁ und c₂ gleich sein.</p>
+  </main>
+
+  <footer><p><a href="index.html">← Zurück zum Hub</a></p></footer>
+  <script src="formel.js"></script>
+  <script src="rechnen.js"></script>
+  <script src="einwaage.js"></script>
+</body>
+</html>

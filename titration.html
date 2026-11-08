@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Titrationsrechner – Hub</title>
+  <meta name="description" content="Gehaltsbestimmung, Titerbestimmung und Titrationskurve">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <p><a href="index.html">← Zurück zum Hub</a></p>
+    <h1>💧 Titrationsrechner</h1>
+    <p>Gehalt aus dem Verbrauch, Titer bestimmen und Titrationskurve zeichnen. Dezimalkomma oder Punkt.</p>
+  </header>
+
+  <main>
+    <section class="box">
+      <h2>Gehaltsbestimmung</h2>
+      <p class="hinweis">n(Analyt) = n(Titrant) · ν mit ν = Mol Analyt pro Mol Titrant aus der Reaktionsgleichung (z. B. H₂SO₄ + 2 NaOH: ν = 0,5).</p>
+      <div class="form">
+        <label>c(Titrant) (mol/L)<input id="g-c" type="text" inputmode="decimal" placeholder="z. B. 0,1"></label>
+        <label>Titer f<input id="g-f" type="text" inputmode="decimal" value="1"></label>
+        <label>Verbrauch V (mL)<input id="g-V" type="text" inputmode="decimal"></label>
+        <label>ν (mol Analyt / mol Titrant)<input id="g-nu" type="text" inputmode="decimal" value="1"></label>
+        <label>Summenformel Analyt (für M)<input id="g-formel" type="text" placeholder="optional, z. B. HCl" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
+        <label>oder Molmasse M (g/mol)<input id="g-M" type="text" inputmode="decimal" placeholder="optional"></label>
+        <label>Volumen der Probe in der Titration (mL)<input id="g-Va" type="text" inputmode="decimal" placeholder="optional, Aliquot"></label>
+        <label>Gesamtvolumen, aus dem pipettiert wurde (mL)<input id="g-Vg" type="text" inputmode="decimal" placeholder="optional, Messkolben"></label>
+        <label>Einwaage der Probe (g)<input id="g-m" type="text" inputmode="decimal" placeholder="optional"></label>
+      </div>
+      <div id="g-out" class="ergebnis-box" hidden></div>
+    </section>
+
+    <section class="box">
+      <h2>Titerbestimmung</h2>
+      <p class="hinweis">Mit einer Urtitersubstanz (z. B. Natriumcarbonat, Oxalsäure). f = c(ist) / c(soll).</p>
+      <div class="form">
+        <label>Summenformel Urtitersubstanz<input id="t-formel" type="text" placeholder="z. B. Na2CO3" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
+        <label>oder Molmasse M (g/mol)<input id="t-M" type="text" inputmode="decimal"></label>
+        <label>Einwaage m (g)<input id="t-m" type="text" inputmode="decimal"></label>
+        <label>ν (mol Urtiter / mol Titrant)<input id="t-nu" type="text" inputmode="decimal" value="1"></label>
+        <label>Verbrauch V (mL)<input id="t-V" type="text" inputmode="decimal"></label>
+        <label>c(soll) (mol/L)<input id="t-c" type="text" inputmode="decimal" placeholder="z. B. 0,1"></label>
+      </div>
+      <div id="t-out" class="ergebnis-box" hidden></div>
+    </section>
+
+    <section class="box">
+      <h2>Titrationskurve</h2>
+      <p class="hinweis">Einprotonige Säure mit starker Base, oder Base mit starker Säure. Berechnet über die Ladungsbilanz (kein Näherungsverfahren).</p>
+      <div class="form">
+        <label>Analyt
+          <select id="k-typ">
+            <option value="saeure">Säure (mit Base titriert)</option>
+            <option value="base">Base (mit Säure titriert)</option>
+          </select>
+        </label>
+        <label>Stärke
+          <select id="k-staerke">
+            <option value="stark">stark</option>
+            <option value="schwach" selected>schwach</option>
+          </select>
+        </label>
+        <label id="k-pk-label"><span id="k-pk-text">pKs</span><input id="k-pk" type="text" inputmode="decimal" value="4,76"></label>
+        <label>c(Analyt) (mol/L)<input id="k-c0" type="text" inputmode="decimal" value="0,1"></label>
+        <label>V(Analyt) (mL)<input id="k-V0" type="text" inputmode="decimal" value="25"></label>
+        <label>c(Titrant) (mol/L)<input id="k-cT" type="text" inputmode="decimal" value="0,1"></label>
+      </div>
+      <canvas id="k-canvas" aria-label="Titrationskurve"></canvas>
+      <p id="k-fehler" class="fehler" hidden></p>
+      <table class="text" id="k-tabelle" hidden>
+        <thead><tr><th>Punkt</th><th>V(Titrant)</th><th>pH</th></tr></thead>
+        <tbody id="k-zeilen"></tbody>
+      </table>
+    </section>
+
+    <p class="hinweis">Titer f: Faktor, um den die tatsächliche Konzentration von der Sollkonzentration abweicht. Die Kurve gilt für 25 °C (pK<sub>w</sub> = 14).
+      Mehrprotonige Säuren und Mischungen sind nicht abgedeckt.</p>
+  </main>
+
+  <footer><p><a href="index.html">← Zurück zum Hub</a></p></footer>
+  <script src="formel.js"></script>
+  <script src="rechnen.js"></script>
+  <script src="titration.js"></script>
+</body>
+</html>

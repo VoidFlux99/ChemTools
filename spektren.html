@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spektren-Übersicht – Hub</title>
+  <meta name="description" content="Wichtige MS-Fragmente sowie IR- und Raman-Wellenzahlen im Überblick">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <p><a href="index.html">← Zurück zum Hub</a></p>
+    <h1>📈 Spektren-Übersicht</h1>
+    <p>Wichtige Fragment-Ionen (MS) sowie Wellenzahlen in IR und Raman.</p>
+    <input id="suche" type="search" placeholder="Suchen, z. B. C=O, 91, Nitril, Chlor …" aria-label="Suche" autocomplete="off">
+    <nav class="filter">
+      <a class="chip" href="#ir">IR / Raman</a>
+      <a class="chip" href="#ms">MS: Fragment-Ionen</a>
+      <a class="chip" href="#verluste">MS: Verluste</a>
+      <a class="chip" href="#regeln">Regeln</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="ir">
+      <h2>IR und Raman: Wellenzahlen</h2>
+      <p class="hinweis">Faustregel: <strong>polare</strong> Gruppen (C=O, O–H, N–O) sind im IR stark. <strong>Unpolare, symmetrische</strong> Bindungen (C=C, C≡C, S–S, Ringatmung) sind im Raman stark. Bei Molekülen mit Inversionszentrum schließen sich IR und Raman aus (Alternativverbot).</p>
+      <table class="text">
+        <thead><tr><th>Wellenzahl (cm⁻¹)</th><th>Schwingung / Gruppe</th><th>IR</th><th>Raman</th></tr></thead>
+        <tbody id="ir-zeilen"></tbody>
+      </table>
+    </section>
+
+    <section id="ms">
+      <h2>MS (EI): typische Fragment-Ionen</h2>
+      <table class="text">
+        <thead><tr><th>m/z</th><th>Ion</th><th>Hinweis auf</th></tr></thead>
+        <tbody id="ms-zeilen"></tbody>
+      </table>
+    </section>
+
+    <section id="verluste">
+      <h2>MS: typische Verluste vom Molekülion</h2>
+      <table class="text">
+        <thead><tr><th>M − x</th><th>Abgespalten</th><th>Hinweis auf</th></tr></thead>
+        <tbody id="verlust-zeilen"></tbody>
+      </table>
+    </section>
+
+    <section id="regeln">
+      <h2>Regeln und Isotopenmuster</h2>
+      <table class="text">
+        <thead><tr><th>Thema</th><th>Inhalt</th></tr></thead>
+        <tbody id="regel-zeilen"></tbody>
+      </table>
+    </section>
+
+    <p id="leer" hidden>Nichts gefunden.</p>
+    <p class="hinweis">Typische Lehrbuchbereiche. Lage und Intensität hängen von Umgebung, Konjugation und Messmethode ab. Bei Abweichungen gilt das Skript deiner Vorlesung.</p>
+  </main>
+
+  <footer>
+    <p><a href="index.html">← Zurück zum Hub</a></p>
+  </footer>
+
+  <script src="spektren.js"></script>
+</body>
+</html>
